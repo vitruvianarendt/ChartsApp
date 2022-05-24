@@ -8,8 +8,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'landingpage',
     pathMatch: 'full'
+  },
+  {
+    path: 'landingpage',
+    loadChildren: () => import('./landingpage/landingpage.module').then( m => m.LandingpagePageModule)
   },
 ];
 

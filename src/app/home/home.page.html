@@ -1,20 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <h2 id="title">Beat and Rythm Episode Chart Summary</h2>
+  <div>
+    <ion-radio-group value="bar" [(ngModel)]="selectedValue">
+      <ion-item lines="none">
+        <ion-label>View Bar Charts</ion-label>
+        <ion-radio slot="start" value="bar"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>View Pie Charts</ion-label>
+        <ion-radio slot="start" value="pie"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
   </div>
+  <ion-select value="Dataset 1">
+    <ion-select-option [value]="i" *ngFor="let i of datasets">{{i}}</ion-select-option>
+  </ion-select>
+  <div [options]="options" class="demo-chart" echarts></div>
+  <div [options]="options1" class="demo-chart" echarts></div>
+
 </ion-content>
