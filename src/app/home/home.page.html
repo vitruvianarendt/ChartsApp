@@ -1,21 +1,24 @@
 <ion-content>
   <h2 id="title">Beat and Rythm Episode Chart Summary</h2>
   <div>
-    <ion-radio-group value="bar" [(ngModel)]="selectedValue">
-      <ion-item lines="none">
-        <ion-label>View Bar Charts</ion-label>
-        <ion-radio slot="start" value="bar"></ion-radio>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>View Pie Charts</ion-label>
-        <ion-radio slot="start" value="pie"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+    <ion-list>
+      <ion-radio-group value="bar" name="radio-group" (ionChange)="radioSelect($event)">
+        <ion-item lines="none">
+          <ion-label>View Bar Charts</ion-label>
+          <ion-radio slot="start" value="bar"></ion-radio>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>View Pie Charts</ion-label>
+          <ion-radio slot="start" value="pie"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
   </div>
-  <ion-select value="Dataset 1">
+  <ion-select value="Dataset 1" (ionChange)="datasetSelect($event)">
     <ion-select-option [value]="i" *ngFor="let i of datasets">{{i}}</ion-select-option>
   </ion-select>
-  <div [options]="options" class="demo-chart" echarts></div>
-  <div [options]="options1" class="demo-chart" echarts></div>
-
+  <div *ngIf="selectedRadioItem=='bar'" [options]="barChart1" class="demo-chart" echarts></div>
+  <div *ngIf="selectedRadioItem=='bar'" [options]="barChart2" class="demo-chart" echarts></div>
+  <div *ngIf="selectedRadioItem=='pie'" [options]="pieChart1" class="demo-chart" echarts></div>
+  <div *ngIf="selectedRadioItem=='pie'" [options]="pieChart2" class="demo-chart" echarts></div>
 </ion-content>
