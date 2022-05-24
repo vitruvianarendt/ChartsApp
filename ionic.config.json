@@ -1,0 +1,7 @@
+{
+  "name": "chartsApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
